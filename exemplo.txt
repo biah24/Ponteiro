@@ -1,0 +1,45 @@
+#include<stdio.h>
+
+struct Funcionario{
+	char nome[50];
+	float vendas[3];
+};
+
+int main(){
+
+	typedef struct Funcionario Funcionario;
+	Funcionario funcionario[2];
+	float totalVendas[2] = {0, 0};
+
+	for (int i = 0; i < 2; i++){
+		
+		printf("Nome funcionario: ");
+		getchar();
+		fgets(funcionario[i].nome, 50, stdin);
+
+		printf("\n");
+		
+        totalVendas[i] = 0;
+        
+        for (int j = 0; j < 3; j++) {
+            printf("Digite o valor da venda no mes %d (nov, dez, jan): ", j + 1);
+            scanf("%f", &funcionario[i].vendas[j]);
+            totalVendas[i] = totalVendas[i] + funcionario[i].vendas[j]; 
+
+        }
+        
+        printf("Funcionario(a): %s", funcionario[i].nome);
+        printf("Total vendido: %.2f\n", totalVendas[i]);
+        printf("Pontuacao dos tres meses: %.2f\n", totalVendas[i] / 1000);
+    } 
+    if (totalVendas[0] > totalVendas[1]) {
+        printf("\nO funcionario %s teve a maior pontuacao com um total de vendas de %.2f\n", funcionario[0].nome, totalVendas[0]);
+    } else {
+        printf("\nO funcionario %s teve a maior pontuacao com um total de vendas de %.2f\n", funcionario[1].nome, totalVendas[1]);
+    } 
+    printf("Total vendido: %.2f\n", totalVendas[0] + totalVendas[1]);
+    return 0;
+    }
+   
+	
+	
